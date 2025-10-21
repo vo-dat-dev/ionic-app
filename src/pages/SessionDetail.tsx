@@ -1,27 +1,27 @@
-import React from 'react';
 import {
-  IonHeader,
-  IonToolbar,
-  IonContent,
-  IonPage,
-  IonButtons,
   IonBackButton,
   IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
   IonIcon,
-  IonText,
-  IonList,
   IonItem,
   IonLabel,
+  IonList,
+  IonPage,
+  IonText,
+  IonToolbar,
 } from '@ionic/react';
+import { cloudDownload, share, star, starOutline } from 'ionicons/icons';
+import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 import { connect } from '../data/connect';
-import { withRouter, RouteComponentProps } from 'react-router';
 import * as selectors from '../data/selectors';
-import { starOutline, star, share, cloudDownload } from 'ionicons/icons';
-import './SessionDetail.scss';
 import { addFavorite, removeFavorite } from '../data/sessions/sessions.actions';
 import { Session } from '../models/Schedule';
+import './SessionDetail.scss';
 
-interface OwnProps extends RouteComponentProps {}
+interface OwnProps extends RouteComponentProps { }
 
 interface StateProps {
   session?: Session;
@@ -50,7 +50,7 @@ const SessionDetail: React.FC<SessionDetailProps> = ({
   const toggleFavorite = () => {
     isFavorite ? removeFavorite(session.id) : addFavorite(session.id);
   };
-  const shareSession = () => {};
+  const shareSession = () => { };
   const sessionClick = (text: string) => {
     console.log(`Clicked ${text}`);
   };

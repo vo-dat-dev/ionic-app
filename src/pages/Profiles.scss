@@ -1,0 +1,10 @@
+.circle-icon-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px; /* Control the size of the circle */
+  height: 36px; /* Control the size of the circle */
+  border-radius: 50%; /* Makes the background circular */
+  background-color: #3880ff; /* Circle background color */
+  padding: 0; /* Remove default padding */
+}

@@ -1,0 +1,10 @@
+.icon-container {
+  background-color: #e1f5fe; /* Light blue background */
+  border-radius: 50%; /* Circle shape */
+  width: 30px; /* Icon container size */
+  height: 30px; /* Same height to make it circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Center the container inside IonCol */
+}

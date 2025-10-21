@@ -1,36 +1,48 @@
-import { IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
+import { IonCard, IonCardContent, IonCol, IonGrid, IonLabel, IonRow } from '@ionic/react';
 import React from 'react';
 import './ProfileItem.scss';
 
 export interface ProfileItemType {
-  Id: string,
-  Name: string,
-  Created: Date
+  MaHS: string;
+  Name: string;
+  CreatedDate: string;
+  key: string;
+  state: string;
 }
 
 
 export interface ProfileItemProps extends ProfileItemType { }
 
-const ProfileItem: React.FC<ProfileItemProps> = ({ Id, Name, Created }: ProfileItemProps) => {
+const tem: React.FC<ProfileItemProps> = ({ MaHS, Name, CreatedDate, state, key }: ProfileItemProps) => {
   return (
-    <>
-      <IonGrid inert={true}>
-        <IonRow>
-          <IonCol offset="6" offset-md="4" offset-lg="2">
-            <IonText>
-              {`Ma HS: ${Id}`}
-            </IonText>
-            <IonText>
-              {`${Name}`}
-            </IonText>
-            <IonText>
-              {/* {`${getDate(Created)}`} */}
-            </IonText>
+    <IonCard className="full-width-card no-shadow">
+      <IonGrid>
+        <IonRow className="ion-align-items-center">
+          <IonCol size="12" sizeMd="8" sizeLg="8">
+            <IonCardContent>
+              <IonLabel>
+                MÃ HS: {MaHS}
+              </IonLabel>
+              <br />
+              <IonLabel>
+                {Name}
+              </IonLabel>
+              <br />
+              <IonLabel>
+                Ngày tạo: {CreatedDate}
+              </IonLabel>
+            </IonCardContent>
+          </IonCol>
+          <IonCol size="12" sizeMd="4" sizeLg="4">
+            <IonCardContent>
+              <IonLabel>
+                Trạng thái: {state}
+              </IonLabel>
+            </IonCardContent>
           </IonCol>
         </IonRow>
       </IonGrid>
-    </>
-  );
+    </IonCard>);
 };
 
-export default ProfileItem;
+export default tem;

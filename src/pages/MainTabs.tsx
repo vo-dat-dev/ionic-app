@@ -1,22 +1,22 @@
-import React from 'react';
 import {
-  IonTabs,
+  IonIcon,
+  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonIcon,
-  IonLabel,
+  IonTabs,
 } from '@ionic/react';
-import { Route, Redirect } from 'react-router';
-import { calendar, location, informationCircle, people } from 'ionicons/icons';
-import SchedulePage from './SchedulePage';
-import SpeakerList from './SpeakerList';
-import SpeakerDetail from './SpeakerDetail';
-import SessionDetail from './SessionDetail';
-import MapView from './MapView';
+import { calendar, document, informationCircle, location, people } from 'ionicons/icons';
+import React from 'react';
+import { Redirect, Route } from 'react-router';
 import About from './About';
+import MapView from './MapView';
+import SchedulePage from './SchedulePage';
+import SessionDetail from './SessionDetail';
+import SpeakerDetail from './SpeakerDetail';
+import SpeakerList from './SpeakerList';
 
-interface MainTabsProps {}
+interface MainTabsProps { }
 
 const MainTabs: React.FC<MainTabsProps> = () => {
   return (
@@ -63,6 +63,10 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <IonTabButton tab="about" href="/tabs/about">
           <IonIcon icon={informationCircle} />
           <IonLabel>About</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="profile" href="/profiles">
+          <IonIcon icon={document} />
+          <IonLabel>profiles</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

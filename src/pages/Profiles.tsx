@@ -7,13 +7,13 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { fileTrayOutline } from 'ionicons/icons';
+import { add, fileTrayOutline, grid } from 'ionicons/icons';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
 import { connect } from '../data/connect';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import Dashboard from './Dashboard';
-import Profile from './Profile';
+import ProfileList from './ProfileList';
 import './Profiles.scss';
 
 interface ProfilesProps {
@@ -21,34 +21,25 @@ interface ProfilesProps {
   setUsername: typeof setUsername;
 }
 
-const Profiles: React.FC<ProfilesProps> = ({
-  setIsLoggedIn,
-  setUsername: setUsernameAction,
-}) => {
+const Profiles: React.FC<ProfilesProps> = () => {
   return (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Redirect exact path="/" to="/dashboard" />
-          {/*
-          Use the render method to reduce the number of renders your component will have due to a route change.
-
-          Use the component prop when your component depends on the RouterComponentProps passed in automatically.
-        */}
+          <Redirect exact path="profiles" to="/profiles/dashboard" />
           <Route path="/profiles/dashboard" render={() => <Dashboard />} exact={true} />
           <Route path="/profiles/camera" render={() => (<h1>camera</h1>)} exact={true} />
-          <Route path="/profiles/profile" render={() => <Profile />} exact={true} />
+          <Route path="/profiles/profile" render={() => <ProfileList />} exact={true} />
         </IonRouterOutlet>
 
         <IonTabBar slot="bottom">
           <IonTabButton tab="dashboard" href="/profiles/dashboard">
-            <IonIcon icon={fileTrayOutline} />
-            <IonLabel>Listen now</IonLabel>
+            <IonIcon icon={grid} />
+            <IonLabel>Dashboard</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="camera" href="/profiles/camera">
-            <IonIcon icon={fileTrayOutline} />
-            <IonLabel>camera</IonLabel>
+          <IonTabButton tab="camera" href="/profiles/camera" >
+            <IonIcon icon={add} className="circle-icon-tab" />
           </IonTabButton>
 
           <IonTabButton tab="profile" href="/profiles/profile">
@@ -61,9 +52,5 @@ const Profiles: React.FC<ProfilesProps> = ({
 };
 
 export default connect<{}, {}, ProfilesProps>({
-  mapDispatchToProps: {
-    setIsLoggedIn,
-    setUsername,
-  },
   component: Profiles,
 });
