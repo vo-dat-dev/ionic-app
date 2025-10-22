@@ -11,6 +11,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import About from './About';
 import MapView from './MapView';
+import Profiles from './Profiles';
 import SchedulePage from './SchedulePage';
 import SessionDetail from './SessionDetail';
 import SpeakerDetail from './SpeakerDetail';
@@ -46,6 +47,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <Route path="/tabs/speakers/sessions/:id" component={SessionDetail} />
         <Route path="/tabs/map" render={() => <MapView />} exact={true} />
         <Route path="/tabs/about" render={() => <About />} exact={true} />
+        <Route path="/tabs/profiles" render={() => <Profiles />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="schedule" href="/tabs/schedule">
@@ -64,7 +66,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={informationCircle} />
           <IonLabel>About</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="profile" href="/profiles">
+        <IonTabButton tab="profile" href="/tabs/profiles">
           <IonIcon icon={document} />
           <IonLabel>profiles</IonLabel>
         </IonTabButton>

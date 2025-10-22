@@ -1,22 +1,24 @@
 import {
+  IonBackButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCol,
+  IonContent,
   IonGrid,
+  IonHeader,
   IonIcon,
   IonLabel,
-  IonRow
+  IonPage,
+  IonRow,
+  IonTitle,
+  IonToolbar
 } from '@ionic/react';
 import { checkmarkCircleOutline, documentText, hourglass, refresh } from 'ionicons/icons';
 import React from 'react';
-import { connect } from '../data/connect';
-import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import './Dashboard.scss';
 
-interface DashboardProps {
-  setIsLoggedIn: typeof setIsLoggedIn;
-  setUsername: typeof setUsername;
-}
+interface DashboardProps { }
 
 export type StatusCardItem = {
   key: string | number;
@@ -55,40 +57,49 @@ const Dashboard: React.FC<DashboardProps> = () => {
   ];
 
   return (
-    <IonGrid fixed>
-      <IonRow>
-        {statusCards?.map((item: StatusCardItem) => (
-          <IonCol size="6" size-md="6" key={item.key}>
-            <IonCard style={{ padding: '8px' }}>
-              <IonCardContent style={{ padding: '4px' }}>
-                <IonRow className="ion-align-items-center" style={{ display: "flex", alignItems: "center" }}>
-                  <IonCol size="4" className="ion-text-center">
-                    <div className="icon-container">
-                      <IonIcon icon={item.icon} />
-                    </div>
-                  </IonCol>
-                  <IonCol size="8">
-                    <IonLabel style={{ fontSize: '18px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
-                      {item.count}
-                    </IonLabel>
-                    <br />
-                    <IonLabel style={{ fontSize: '14px', color: 'gray', whiteSpace: 'nowrap' }}>
-                      {item.label}
-                    </IonLabel>
-                  </IonCol>
-                </IonRow>
-              </IonCardContent>
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Dashboard</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <IonGrid fixed>
+          <IonRow>
+            {statusCards?.map((item: StatusCardItem) => (
+              <IonCol size="6" size-md="6" key={item.key}>
+                <IonCard style={{ padding: '8px' }}>
+                  <IonCardContent style={{ padding: '4px' }}>
+                    <IonRow className="ion-align-items-center" style={{ display: "flex", alignItems: "center" }}>
+                      <IonCol size="4" className="ion-text-center">
+                        <div className="icon-container">
+                          <IonIcon icon={item.icon} />
+                        </div>
+                      </IonCol>
+                      <IonCol size="8">
+                        <IonLabel style={{ fontSize: '18px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                          {item.count}
+                        </IonLabel>
+                        <br />
+                        <IonLabel style={{ fontSize: '14px', color: 'gray', whiteSpace: 'nowrap' }}>
+                          {item.label}
+                        </IonLabel>
+                      </IonCol>
+                    </IonRow>
+                  </IonCardContent>
 
-            </IonCard>
+                </IonCard>
 
-          </IonCol>
-        ))}
-      </IonRow>
-    </IonGrid>
+              </IonCol>
+            ))}
+          </IonRow>
+        </IonGrid>
+      </IonContent>
+    </IonPage>
   );
 };
 
-export default connect<{}, {}, DashboardProps>({
-  component: Dashboard,
-
-});
+export default React.memo(Dashboard);

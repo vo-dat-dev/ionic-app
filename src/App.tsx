@@ -59,8 +59,6 @@ import { Schedule } from './models/Schedule';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import MainTabs from './pages/MainTabs';
-import ProfileDetail from './pages/ProfileDetail';
-import Profiles from './pages/Profiles';
 import Signup from './pages/Signup';
 import Support from './pages/Support';
 import Tutorial from './pages/Tutorial';
@@ -121,8 +119,6 @@ const IonicApp: React.FC<IonicAppProps> = ({
             <Route path="/signup" component={Signup} />
             <Route path="/support" component={Support} />
             <Route path="/tutorial" component={Tutorial} />
-            <Route path="/profiles" render={() => <Profiles />} />
-            <Route path="/profiles/profile/:id" component={ProfileDetail} />
             <Route
               path="/logout"
               render={() => {

@@ -1,16 +1,11 @@
-import { IonItem, IonList, IonSearchbar, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonText } from '@ionic/react';
+import { IonBackButton, IonButtons, IonHeader, IonItem, IonList, IonPage, IonSearchbar, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useState } from 'react';
-import { connect } from '../data/connect';
-import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import './Profile.scss';
 import ProfileItem, { ProfileItemType } from './ProfileItem';
 
-interface ProfileProps {
-  setIsLoggedIn: typeof setIsLoggedIn;
-  setUsername: typeof setUsername;
-}
+interface ProfileProps { }
 
-const Profile: React.FC<ProfileProps> = () => {
+const ProfileList: React.FC<ProfileProps> = () => {
   const [segmented, setSegmented] = useState<string>('waiting');
 
   const handleSegmentChange = (e: CustomEvent) => {
@@ -64,7 +59,17 @@ const Profile: React.FC<ProfileProps> = () => {
 
 
   return (
-    <>
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Chi tiết hồ sơ</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
+          </IonButtons>
+          <IonButtons slot="end">
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
       <IonSegment value={segmented} onIonChange={handleSegmentChange}>
         <IonSegmentButton value="waiting" contentId="waiting">
           <IonText>Chờ duyệt</IonText>
@@ -84,7 +89,7 @@ const Profile: React.FC<ProfileProps> = () => {
         <IonSegmentContent id="waiting">
           <IonList>
             {profiles.map((profile: ProfileItemType) => (
-              <IonItem routerLink={`/profiles/profile/${profile.key}`}>
+              <IonItem routerLink={`/tabs/profiles/profile/${profile.key}`}>
                 <ProfileItem {...profile} />
               </IonItem>
             ))}
@@ -93,7 +98,7 @@ const Profile: React.FC<ProfileProps> = () => {
         <IonSegmentContent id="draft">
           <IonList>
             {profiles.map((profile: ProfileItemType) => (
-              <IonItem routerLink={`/profiles/profile/${profile.key}`}>
+              <IonItem routerLink={`/tabs/profiles/profile/${profile.key}`}>
                 <ProfileItem {...profile} />
               </IonItem>
             ))}
@@ -102,7 +107,7 @@ const Profile: React.FC<ProfileProps> = () => {
         <IonSegmentContent id="returned">
           <IonList>
             {profiles.map((profile: ProfileItemType) => (
-              <IonItem routerLink={`/profiles/profile/${profile.key}`}>
+              <IonItem routerLink={`/tabs/profiles/profile/${profile.key}`}>
                 <ProfileItem {...profile} />
               </IonItem>
             ))}
@@ -111,17 +116,15 @@ const Profile: React.FC<ProfileProps> = () => {
         <IonSegmentContent id="approved">
           <IonList>
             {profiles.map((profile: ProfileItemType) => (
-              <IonItem routerLink={`/profiles/profile/${profile.key}`}>
+              <IonItem routerLink={`/tabs/profiles/profile/${profile.key}`}>
                 <ProfileItem {...profile} />
               </IonItem>
             ))}
           </IonList>
         </IonSegmentContent>
       </IonSegmentView>
-    </>
+    </IonPage>
   );
 };
 
-export default connect<{}, {}, ProfileProps>({
-  component: Profile,
-});
+export default React.memo(ProfileList);

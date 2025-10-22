@@ -4,6 +4,7 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonTitle,
   IonToolbar
 } from '@ionic/react';
 import React from 'react';
@@ -33,8 +34,9 @@ const ProfileDetail: React.FC<SessionDetailProps> = () => {
     <IonPage id="session-detail-page">
       <IonHeader>
         <IonToolbar>
+          <IonTitle>Chi tiết hồ sơ</IonTitle>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/profiles/profile"></IonBackButton>
+            <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
           </IonButtons>
           <IonButtons slot="end">
           </IonButtons>
