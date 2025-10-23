@@ -85,7 +85,7 @@ const ProfileList: React.FC<ProfileProps> = () => {
                 filterProfilesByState.map(({ key, ...profile }: ProfileItemType, index: number) => (
                   <IonItem
                     key={index}
-                    routerLink={`${index}`}
+                    routerLink={`profiles/${index}`}
                   >
                     <ProfileItem key={profile.MaHS} {...profile} />
                     <IonBadge slot="end" color={color} className="ion-text-white" style={{ color: "#fff" }}>

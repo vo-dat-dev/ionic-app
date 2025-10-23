@@ -53,19 +53,6 @@ const Dashboard: React.FC<DashboardProps> = () => {
 
   return (
     <IonPage>
-      {/* <IonHeader>
-        <IonToolbar>
-          <IonTitle>Dashboard</IonTitle>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
-          </IonButtons>
-          <IonButtons slot="end">
-            <IonButton href='dashboard/filters'>
-              <IonIcon icon={optionsOutline} />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader> */}
       <IonContent>
         <IonGrid fixed>
           <IonRow>
