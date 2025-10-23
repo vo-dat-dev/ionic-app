@@ -15,23 +15,21 @@ const MainApp: React.FC<MainTabsProps> = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Dashboard</IonTitle>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/apps"></IonBackButton>
           </IonButtons>
+          <IonTitle slot='start'>Dashboard</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonReactRouter>
           <IonTabs>
             <IonRouterOutlet>
-              <Redirect exact path="/caa" to="/caa/dashboard" />
-
-              <Route path="/caa/dashboard" render={() => <Dashboard />} exact={true} />
+              <Route path="/caa/dashboard" component={Dashboard} exact={true} />
               <Route path="/caa/dashboard/filters" component={DashboardFilter} />
               <Route path="/caa/camera" render={() => (<CameraComponent />)} exact={true} />
               <Route path="/caa/profiles" render={() => <ProfileList />} exact={true} />
-
+              <Redirect exact path="/caa" to="/caa/dashboard" />
             </IonRouterOutlet>
 
             <IonTabBar slot="bottom">
