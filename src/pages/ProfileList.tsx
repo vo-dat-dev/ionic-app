@@ -1,4 +1,4 @@
-import { IonBackButton, IonButtons, IonHeader, IonItem, IonList, IonPage, IonSearchbar, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonItem, IonList, IonPage, IonSearchbar, IonSegment, IonSegmentButton, IonSegmentContent, IonSegmentView, IonText } from '@ionic/react';
 import React, { useState } from 'react';
 import './Profile.scss';
 import ProfileItem, { ProfileItemType } from './ProfileItem';
@@ -60,16 +60,6 @@ const ProfileList: React.FC<ProfileProps> = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Chi tiết hồ sơ</IonTitle>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
-          </IonButtons>
-          <IonButtons slot="end">
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
       <IonSegment value={segmented} onIonChange={handleSegmentChange}>
         <IonSegmentButton value="waiting" contentId="waiting">
           <IonText>Chờ duyệt</IonText>

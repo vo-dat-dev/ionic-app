@@ -1,14 +1,14 @@
 import {
   IonApp,
+  IonContent,
+  IonMenu,
   IonRouterOutlet,
-  IonSplitPane,
-  setupIonicReact,
+  setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
-import Menu from './components/Menu';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,8 +45,6 @@ import 'leaflet/dist/leaflet.css';
 
 /* Global styles */
 import './App.scss';
-import HomeOrTutorial from './components/HomeOrTutorial';
-import RedirectToLogin from './components/RedirectToLogin';
 import { AppContextProvider } from './data/AppContext';
 import { connect } from './data/connect';
 import { loadConfData } from './data/sessions/sessions.actions';
@@ -56,13 +54,9 @@ import {
   setUsername,
 } from './data/user/user.actions';
 import { Schedule } from './models/Schedule';
-import Account from './pages/Account';
-import Login from './pages/Login';
-import MainTabs from './pages/MainTabs';
-import Signup from './pages/Signup';
-import Support from './pages/Support';
-import Tutorial from './pages/Tutorial';
-
+import MainApp from './pages/caa-app/MainApp';
+import RootApp from './pages/RootApp';
+// import * as ThamDinhApp from './pages/thamdinh-app/MainApp'; 
 setupIonicReact();
 
 const App: React.FC = () => {
@@ -101,42 +95,71 @@ const IonicApp: React.FC<IonicAppProps> = ({
     // eslint-disable-next-line
   }, []);
 
-  return schedule.groups.length === 0 ? (
-    <div></div>
-  ) : (
-    <IonApp className={`${darkMode ? 'ion-palette-dark' : ''}`}>
+  return (
+    <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            {/*
-                We use IonRoute here to keep the tabs state intact,
-                which makes transitions between tabs and non tab pages smooth
-                */}
-            <Route path="/tabs" render={() => <MainTabs />} />
-            <Route path="/account" component={Account} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/support" component={Support} />
-            <Route path="/tutorial" component={Tutorial} />
-            <Route
-              path="/logout"
-              render={() => {
-                return (
-                  <RedirectToLogin
-                    setIsLoggedIn={setIsLoggedIn}
-                    setUsername={setUsername}
-                  />
-                );
-              }}
-            />
-            <Route path="/" component={HomeOrTutorial} exact />
-          </IonRouterOutlet>
-        </IonSplitPane>
+        <IonMenu contentId="main-content"><IonContent className="ion-padding">This is the menu content.</IonContent></IonMenu>
+        <IonRouterOutlet>
+          <Redirect path="/" exact to="/apps" />
+          <Route path="/apps" component={RootApp} />
+          <Route path="/caa" component={MainApp} />
+          <Route path="/tham-dinh" component={MainApp} />
+        </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
-  );
+  )
 };
+
+// const IonicApp: React.FC<IonicAppProps> = ({
+//   darkMode,
+//   schedule,
+//   setIsLoggedIn,
+//   setUsername,
+//   loadConfData,
+//   loadUserData,
+// }) => {
+//   useEffect(() => {
+//     loadUserData();
+//     loadConfData();
+//     // eslint-disable-next-line
+//   }, []);
+
+//   return schedule.groups.length === 0 ? (
+//     <div></div>
+//   ) : (
+//     <IonApp className={`${darkMode ? 'ion-palette-dark' : ''}`}>
+//       <IonReactRouter>
+//         <IonSplitPane contentId="main">
+//           <Menu />
+//           <IonRouterOutlet id="main">
+//             {/*
+//                 We use IonRoute here to keep the tabs state intact,
+//                 which makes transitions between tabs and non tab pages smooth
+//                 */}
+//             <Route path="/tabs" render={() => <MainTabs />} />
+//             <Route path="/account" component={Account} />
+//             <Route path="/login" component={Login} />
+//             <Route path="/signup" component={Signup} />
+//             <Route path="/support" component={Support} />
+//             <Route path="/tutorial" component={Tutorial} />
+//             <Route
+//               path="/logout"
+//               render={() => {
+//                 return (
+//                   <RedirectToLogin
+//                     setIsLoggedIn={setIsLoggedIn}
+//                     setUsername={setUsername}
+//                   />
+//                 );
+//               }}
+//             />
+//             <Route path="/" component={HomeOrTutorial} exact />
+//           </IonRouterOutlet>
+//         </IonSplitPane>
+//       </IonReactRouter>
+//     </IonApp>
+//   );
+// };
 
 export default App;
 

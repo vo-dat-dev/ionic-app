@@ -44,13 +44,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<key>NSCameraUsageDescription</key>
-	<string>This app requires access to the camera</string>
-
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires access to your photo library to select and upload photos</string>
-
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app requires access to your photo library to save photos</string>	<true/>
-</dict>
+	<true/>
+	</dict>
 </plist>

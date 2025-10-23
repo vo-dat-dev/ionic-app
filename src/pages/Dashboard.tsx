@@ -1,18 +1,13 @@
 import {
-  IonBackButton,
-  IonButtons,
   IonCard,
   IonCardContent,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
   IonIcon,
   IonLabel,
   IonPage,
-  IonRow,
-  IonTitle,
-  IonToolbar
+  IonRow
 } from '@ionic/react';
 import { checkmarkCircleOutline, documentText, hourglass, refresh } from 'ionicons/icons';
 import React from 'react';
@@ -58,14 +53,19 @@ const Dashboard: React.FC<DashboardProps> = () => {
 
   return (
     <IonPage>
-      <IonHeader>
+      {/* <IonHeader>
         <IonToolbar>
           <IonTitle>Dashboard</IonTitle>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
           </IonButtons>
+          <IonButtons slot="end">
+            <IonButton href='dashboard/filters'>
+              <IonIcon icon={optionsOutline} />
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
-      </IonHeader>
+      </IonHeader> */}
       <IonContent>
         <IonGrid fixed>
           <IonRow>
