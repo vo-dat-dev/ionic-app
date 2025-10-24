@@ -78,7 +78,7 @@ const ProfileDetail: React.FC<SessionDetailProps> = () => {
         <IonToolbar>
           <IonTitle>Chi tiết hồ sơ</IonTitle>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/tabs/profiles"></IonBackButton>
+            <IonBackButton />
           </IonButtons>
           <IonButtons slot="end">
           </IonButtons>
