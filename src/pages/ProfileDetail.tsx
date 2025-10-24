@@ -1,4 +1,5 @@
 import {
+  IonAlert,
   IonBackButton,
   IonButton,
   IonButtons,
@@ -28,7 +29,7 @@ import {
   mapOutline,
   peopleOutline
 } from 'ionicons/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
@@ -66,6 +67,11 @@ const ProfileDetail: React.FC<SessionDetailProps> = () => {
     { icon: businessOutline, title: 'Tài sản tích lũy', count: 0 },
     { icon: imageOutline, title: 'Khác', count: 0 },
   ];
+
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('Nguyễn Văn B');
+
   return (
     <IonPage id="session-detail-page">
       <IonHeader>
@@ -147,9 +153,11 @@ const ProfileDetail: React.FC<SessionDetailProps> = () => {
               </IonCol>
               <IonCol size="6">
                 <IonButton
+                  id="present-alert"
                   expand="block"
                   color="primary"
                   style={{ textTransform: 'uppercase' }}
+                  onClick={() => setIsOpen(true)}
                 >
                   Chuyển duyệt
                 </IonButton>
@@ -158,6 +166,19 @@ const ProfileDetail: React.FC<SessionDetailProps> = () => {
           </IonGrid>
         </IonToolbar>
       </IonFooter>
+
+      <IonAlert
+        trigger="present-alert"
+        isOpen={isOpen}
+        header="Chuyển duyệt"
+        buttons={['quay lại', 'đồng ý']}
+        inputs={[
+          {
+            type: 'textarea',
+            placeholder: 'A little about yourself',
+          },
+        ]}
+      />
     </IonPage>
   );
 };

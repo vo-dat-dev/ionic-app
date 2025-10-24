@@ -1,8 +1,9 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonIcon, IonLabel, IonPage, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonLabel, IonPage, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { add, documentOutline, grid } from 'ionicons/icons';
+import { add, documentOutline, grid, optionsOutline } from 'ionicons/icons';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
+import { Link } from 'react-router-dom';
 import CameraComponent from '../CameraComponent';
 import Dashboard from '../Dashboard';
 import DashboardFilter from '../DashboardFilter';
@@ -20,6 +21,13 @@ const MainApp: React.FC<MainTabsProps> = () => {
             <IonBackButton defaultHref="/apps"></IonBackButton>
           </IonButtons>
           <IonTitle slot='start'>Dashboard</IonTitle>
+          <IonButtons slot='end'>
+            <Link to={"/caa/dashboard/filters"}>
+              <IonButton>
+                <IonIcon icon={optionsOutline} />
+              </IonButton>
+            </Link>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -28,7 +36,7 @@ const MainApp: React.FC<MainTabsProps> = () => {
 
             <IonRouterOutlet>
               <Route path="/caa/dashboard" component={Dashboard} exact={true} />
-              <Route path="/caa/dashboard/filters" component={DashboardFilter} />
+              <Route path="/caa/dashboard/filters" component={DashboardFilter} exact={true} />
               <Route path="/caa/camera" render={() => (<CameraComponent />)} exact={true} />
               <Route path="/caa/profiles" render={() => <ProfileList />} exact={true} />
               <Route path="/caa/profiles/:id" component={ProfileDetail} exact={true} />
